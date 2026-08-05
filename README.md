@@ -1,5 +1,3 @@
-# HTML Concepts
-
 ## Table of Contents
 
 1. [Semantic HTML](#semantic-html)
@@ -20,12 +18,13 @@
 16. [Security](#security)
 17. [SEO Essentials](#seo-essentials)
 18. [Progressive Web Apps (PWA) Basics](#progressive-web-apps-pwa-basics)
+19. [Interview Drills](#interview-drills)
 
 ---
 
 # Semantic HTML
 
-Semantic HTML means using elements that describe the *meaning* of the content, not just its appearance. A `<nav>` tells the browser, screen readers, and search engines "this is navigation." A `<div>` tells them nothing.
+Semantic HTML means using elements that describe the _meaning_ of the content, not just its appearance. A `<nav>` tells the browser, screen readers, and search engines "this is navigation." A `<div>` tells them nothing.
 
 ### Why it matters
 
@@ -159,14 +158,14 @@ Semantic HTML means using elements that describe the *meaning* of the content, n
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page Title</title>
-</head>
-<body>
-  <!-- Content goes here -->
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Title</title>
+  </head>
+  <body>
+    <!-- Content goes here -->
+  </body>
 </html>
 ```
 
@@ -187,7 +186,7 @@ Tells the browser to render the page in **standards mode** instead of quirks mod
 You can check which mode a page is using:
 
 ```javascript
-document.compatMode
+document.compatMode;
 // "CSS1Compat" = standards mode
 // "BackCompat" = quirks mode
 ```
@@ -197,7 +196,7 @@ This is not an HTML tag — it's an instruction to the browser. In HTML5, this i
 ### html element with lang
 
 ```html
-<html lang="en">
+<html lang="en"></html>
 ```
 
 The `lang` attribute tells browsers and screen readers what language the content is in. Screen readers use this to switch pronunciation rules. Search engines use it for language-specific results. Browser translation features use it to detect the source language.
@@ -205,21 +204,25 @@ The `lang` attribute tells browsers and screen readers what language the content
 ```html
 <!-- For specific regions -->
 <html lang="en-US">
-<html lang="en-GB">
-<html lang="ta">  <!-- Tamil -->
+  <html lang="en-GB">
+    <html lang="ta">
+      <!-- Tamil -->
 
-<!-- For multilingual content, override at element level -->
-<html lang="en">
-  <body>
-    <p>This is English content.</p>
-    <p lang="ta">இது தமிழ் உள்ளடக்கம்.</p>
-  </body>
+      <!-- For multilingual content, override at element level -->
+      <html lang="en">
+        <body>
+          <p>This is English content.</p>
+          <p lang="ta">இது தமிழ் உள்ளடக்கம்.</p>
+        </body>
+      </html>
+    </html>
+  </html>
 </html>
 ```
 
 ### head element
 
-The `<head>` contains metadata about the document — information *about* the page, not content *on* the page. Nothing inside `<head>` is visible to the user (except `<title>` which shows in the browser tab).
+The `<head>` contains metadata about the document — information _about_ the page, not content _on_ the page. Nothing inside `<head>` is visible to the user (except `<title>` which shows in the browser tab).
 
 **Essential head elements:**
 
@@ -255,13 +258,22 @@ The `<head>` contains metadata about the document — information *about* the pa
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Prevent user zoom (BAD for accessibility — avoid) -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, user-scalable=no"
+/>
 
 <!-- Allow zoom but set limits -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+/>
 
 <!-- For full-screen apps that extend under the notch (iPhone) -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+/>
 ```
 
 📢 NOTES:
@@ -356,8 +368,11 @@ Meta tags provide metadata about the HTML document. They live in `<head>` and ar
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Page description — shows in search results under the title -->
-<meta name="description" content="Learn JavaScript concepts with clear
-  explanations and code examples. A senior frontend engineer's reference." />
+<meta
+  name="description"
+  content="Learn JavaScript concepts with clear
+  explanations and code examples. A senior frontend engineer's reference."
+/>
 
 <!-- Author -->
 <meta name="author" content="Akshai" />
@@ -367,9 +382,12 @@ Meta tags provide metadata about the HTML document. They live in `<head>` and ar
 
 ```html
 <!-- Control search engine indexing -->
-<meta name="robots" content="index, follow" />      <!-- default: index and follow links -->
-<meta name="robots" content="noindex, nofollow" />   <!-- hide from search + don't follow links -->
-<meta name="robots" content="noindex, follow" />     <!-- hide from search but follow links -->
+<meta name="robots" content="index, follow" />
+<!-- default: index and follow links -->
+<meta name="robots" content="noindex, nofollow" />
+<!-- hide from search + don't follow links -->
+<meta name="robots" content="noindex, follow" />
+<!-- hide from search but follow links -->
 ```
 
 **`index` / `noindex`** — should this page appear in search results?
@@ -391,8 +409,14 @@ When you share a link on LinkedIn, Facebook, Slack, or WhatsApp, the platform fe
 
 ```html
 <meta property="og:title" content="Understanding Closures in JavaScript" />
-<meta property="og:description" content="A deep dive into how closures work..." />
-<meta property="og:image" content="https://example.com/images/closures-og.png" />
+<meta
+  property="og:description"
+  content="A deep dive into how closures work..."
+/>
+<meta
+  property="og:image"
+  content="https://example.com/images/closures-og.png"
+/>
 <meta property="og:url" content="https://example.com/blog/closures" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="JS Concepts" />
@@ -409,8 +433,14 @@ Without these tags, platforms try to auto-generate a preview — usually poorly.
 ```html
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Understanding Closures in JavaScript" />
-<meta name="twitter:description" content="A deep dive into how closures work..." />
-<meta name="twitter:image" content="https://example.com/images/closures-twitter.png" />
+<meta
+  name="twitter:description"
+  content="A deep dive into how closures work..."
+/>
+<meta
+  name="twitter:image"
+  content="https://example.com/images/closures-twitter.png"
+/>
 ```
 
 If Twitter card tags are missing, Twitter falls back to Open Graph tags.
@@ -420,15 +450,25 @@ If Twitter card tags are missing, Twitter falls back to Open Graph tags.
 ```html
 <!-- Theme color — colors the browser toolbar on mobile -->
 <meta name="theme-color" content="#1a1a2e" />
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: dark)" />
+<meta
+  name="theme-color"
+  content="#ffffff"
+  media="(prefers-color-scheme: light)"
+/>
+<meta
+  name="theme-color"
+  content="#1a1a2e"
+  media="(prefers-color-scheme: dark)"
+/>
 
 <!-- Prevent automatic phone number detection on iOS -->
 <meta name="format-detection" content="telephone=no" />
 
 <!-- HTTP equiv — rarely needed but good to know -->
-<meta http-equiv="refresh" content="30" />  <!-- auto-refresh every 30 seconds -->
-<meta http-equiv="refresh" content="3;url=https://example.com/new-page" /> <!-- redirect after 3s -->
+<meta http-equiv="refresh" content="30" />
+<!-- auto-refresh every 30 seconds -->
+<meta http-equiv="refresh" content="3;url=https://example.com/new-page" />
+<!-- redirect after 3s -->
 
 <!-- Content Security Policy (basic) -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'" />
@@ -480,35 +520,55 @@ Why this matters: clicking the label focuses/activates the input. Screen readers
 
 ```html
 <!-- Text inputs -->
-<input type="text" />          <!-- generic text -->
-<input type="email" />         <!-- email validation + mobile @ keyboard -->
-<input type="password" />      <!-- masked characters -->
-<input type="number" />        <!-- numeric keyboard + spin buttons -->
-<input type="tel" />           <!-- phone keyboard on mobile — no validation -->
-<input type="url" />           <!-- URL validation -->
-<input type="search" />        <!-- search field with clear button in some browsers -->
+<input type="text" />
+<!-- generic text -->
+<input type="email" />
+<!-- email validation + mobile @ keyboard -->
+<input type="password" />
+<!-- masked characters -->
+<input type="number" />
+<!-- numeric keyboard + spin buttons -->
+<input type="tel" />
+<!-- phone keyboard on mobile — no validation -->
+<input type="url" />
+<!-- URL validation -->
+<input type="search" />
+<!-- search field with clear button in some browsers -->
 
 <!-- Date and time -->
-<input type="date" />          <!-- date picker -->
-<input type="time" />          <!-- time picker -->
+<input type="date" />
+<!-- date picker -->
+<input type="time" />
+<!-- time picker -->
 <input type="datetime-local" /><!-- date + time picker -->
-<input type="month" />         <!-- month/year picker -->
-<input type="week" />          <!-- week picker -->
+<input type="month" />
+<!-- month/year picker -->
+<input type="week" />
+<!-- week picker -->
 
 <!-- Selection -->
-<input type="checkbox" />      <!-- multiple selection -->
-<input type="radio" />         <!-- single selection within a group -->
-<input type="range" />         <!-- slider -->
-<input type="color" />         <!-- color picker -->
+<input type="checkbox" />
+<!-- multiple selection -->
+<input type="radio" />
+<!-- single selection within a group -->
+<input type="range" />
+<!-- slider -->
+<input type="color" />
+<!-- color picker -->
 
 <!-- File -->
-<input type="file" />                          <!-- single file -->
-<input type="file" multiple />                 <!-- multiple files -->
-<input type="file" accept=".pdf,.doc" />       <!-- restrict file types -->
-<input type="file" accept="image/*" />         <!-- any image -->
+<input type="file" />
+<!-- single file -->
+<input type="file" multiple />
+<!-- multiple files -->
+<input type="file" accept=".pdf,.doc" />
+<!-- restrict file types -->
+<input type="file" accept="image/*" />
+<!-- any image -->
 
 <!-- Hidden -->
-<input type="hidden" name="csrf" value="token123" />  <!-- not visible, sent with form -->
+<input type="hidden" name="csrf" value="token123" />
+<!-- not visible, sent with form -->
 ```
 
 📢 NOTES:
@@ -532,9 +592,12 @@ Why this matters: clicking the label focuses/activates the input. Screen readers
 <input type="text" pattern="[A-Za-z]{3,}" title="At least 3 letters" />
 
 <!-- Custom validation message -->
-<input type="email" required
+<input
+  type="email"
+  required
   oninvalid="this.setCustomValidity('Please enter a valid email')"
-  oninput="this.setCustomValidity('')" />
+  oninput="this.setCustomValidity('')"
+/>
 ```
 
 ### Radio button groups
@@ -605,8 +668,13 @@ Unlike radio buttons, multiple checkboxes can be selected. Use the same `name` w
 
 <!-- Multi-line text -->
 <label for="bio">Bio</label>
-<textarea id="bio" name="bio" rows="4" cols="50"
-  placeholder="Tell us about yourself..."></textarea>
+<textarea
+  id="bio"
+  name="bio"
+  rows="4"
+  cols="50"
+  placeholder="Tell us about yourself..."
+></textarea>
 
 <!-- Grouping related inputs -->
 <fieldset>
@@ -651,29 +719,29 @@ Unlike `<select>`, the user can still type a custom value. The `<datalist>` prov
 ```html
 <!-- Default: URL-encoded (key=value&key=value) -->
 <form method="POST" enctype="application/x-www-form-urlencoded">
+  <!-- For file uploads — MUST use this enctype -->
+  <form method="POST" enctype="multipart/form-data">
+    <input type="file" name="avatar" />
+  </form>
 
-<!-- For file uploads — MUST use this enctype -->
-<form method="POST" enctype="multipart/form-data">
-  <input type="file" name="avatar" />
+  <!-- Plain text — rarely used -->
+  <form method="POST" enctype="text/plain"></form>
 </form>
-
-<!-- Plain text — rarely used -->
-<form method="POST" enctype="text/plain">
 ```
 
 ### FormData API
 
 ```javascript
-const form = document.querySelector("form");
+const form = document.querySelector('form');
 
-form.addEventListener("submit", (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const formData = new FormData(form);
 
   // Access values
-  formData.get("username");        // value of input[name="username"]
-  formData.getAll("hobbies");      // all values for multi-select/checkboxes
+  formData.get('username'); // value of input[name="username"]
+  formData.getAll('hobbies'); // all values for multi-select/checkboxes
 
   // Iterate
   for (const [key, value] of formData) {
@@ -681,15 +749,123 @@ form.addEventListener("submit", (e) => {
   }
 
   // Send with fetch
-  fetch("/api/submit", {
-    method: "POST",
-    body: formData,  // Content-Type is set automatically
+  fetch('/api/submit', {
+    method: 'POST',
+    body: formData, // Content-Type is set automatically
   });
 
   // Convert to plain object
   const data = Object.fromEntries(formData);
 });
 ```
+
+### Constraint Validation API
+
+Native HTML validation is more than `required` attributes — the Constraint Validation API gives you programmatic control:
+
+```javascript
+const email = document.querySelector('#email');
+const form = document.querySelector('form');
+
+// Check a single field
+email.checkValidity(); // true | false
+email.reportValidity(); // false → shows native browser tooltip
+email.validity; // ValidityState object
+
+// ValidityState flags you'll actually use
+email.validity.valueMissing; // empty + required
+email.validity.typeMismatch; // type="email" but not an email
+email.validity.patternMismatch; // failed pattern=
+email.validity.tooShort; // below minlength
+email.validity.tooLong; // above maxlength
+email.validity.rangeUnderflow; // below min
+email.validity.rangeOverflow; // above max
+email.validity.stepMismatch; // doesn't match step
+email.validity.customError; // setCustomValidity() was called
+email.validity.valid; // all constraints pass
+
+// Custom messages — clear on input or they stick forever
+email.addEventListener('invalid', () => {
+  if (email.validity.valueMissing) {
+    email.setCustomValidity('Email is required');
+  } else if (email.validity.typeMismatch) {
+    email.setCustomValidity('Enter a valid email like name@example.com');
+  }
+});
+email.addEventListener('input', () => email.setCustomValidity(''));
+
+// Validate whole form without submitting
+form.addEventListener('submit', (e) => {
+  if (!form.checkValidity()) {
+    e.preventDefault();
+    form.reportValidity(); // focus first invalid + show message
+  }
+});
+```
+
+### readonly vs disabled vs aria-disabled
+
+```
+Attribute / state   | Submitted | Focusable | Editable | Announced
+--------------------|-----------|-----------|----------|------------------
+(normal)            | ✅        | ✅        | ✅       | as control
+readonly            | ✅        | ✅        | ❌       | "readonly"
+disabled            | ❌        | ❌        | ❌       | usually skipped
+aria-disabled=true  | ✅*       | ✅        | ❌*      | "disabled"
+```
+
+\* `aria-disabled` is announcement-only — you must block interaction in JS yourself.
+
+```html
+<!-- Prefill that users can copy but not change — still submitted -->
+<input type="email" name="account" value="akshai@example.com" readonly />
+
+<!-- Truly inactive — NOT submitted, removed from tab order -->
+<button type="submit" disabled>Saving…</button>
+
+<!-- Keep focusable for screen reader discovery (e.g. explain why disabled) -->
+<button type="submit" aria-disabled="true" aria-describedby="why">
+  Submit
+</button>
+<p id="why">Complete all required fields to submit.</p>
+```
+
+### formaction / formenctype / formmethod
+
+Override the parent form's submit behavior per button — useful for "Save draft" vs "Publish":
+
+```html
+<form action="/api/posts" method="POST">
+  <textarea name="body"></textarea>
+  <button type="submit">Publish</button>
+  <button type="submit" formaction="/api/drafts" formmethod="POST">
+    Save draft
+  </button>
+  <button type="submit" formaction="/api/preview" formmethod="GET">
+    Preview
+  </button>
+</form>
+```
+
+### autocomplete tokens (senior detail)
+
+Browsers autofill more accurately when you use standard tokens — especially important for login and checkout:
+
+```html
+<input type="email" name="email" autocomplete="email" />
+<input type="password" name="password" autocomplete="current-password" />
+<input type="password" name="new-password" autocomplete="new-password" />
+<input type="text" name="cc-name" autocomplete="cc-name" />
+<input type="text" name="cc-number" autocomplete="cc-number" />
+<input type="text" name="cc-exp" autocomplete="cc-exp" />
+<input type="text" name="cc-csc" autocomplete="cc-csc" />
+<input autocomplete="one-time-code" inputmode="numeric" />
+<!-- SMS OTP -->
+```
+
+📢 NOTES:
+
+> Never disable autocomplete on login fields (`autocomplete="off"` on password). Password managers rely on these tokens. For OTP, prefer `autocomplete="one-time-code"` over reinventing paste handlers.
 
 ---
 
@@ -703,8 +879,12 @@ Accessibility means making your website usable by everyone, including people who
 
 ```html
 <!-- BAD — reinventing a button -->
-<div role="button" tabindex="0" onclick="submit()"
-  onkeydown="if(event.key==='Enter') submit()">
+<div
+  role="button"
+  tabindex="0"
+  onclick="submit()"
+  onkeydown="if(event.key==='Enter') submit()"
+>
   Submit
 </div>
 
@@ -716,27 +896,40 @@ A `<button>` already has the correct role, keyboard handling (Enter and Space), 
 
 ### ARIA roles
 
-Roles tell assistive technology what an element *is*:
+Roles tell assistive technology what an element _is_:
 
 ```html
 <!-- Landmark roles — usually better to use semantic HTML instead -->
-<div role="navigation">   <!-- use <nav> instead -->
-<div role="main">          <!-- use <main> instead -->
-<div role="banner">        <!-- use <header> instead -->
-<div role="contentinfo">   <!-- use <footer> instead -->
+<div role="navigation">
+  <!-- use <nav> instead -->
+  <div role="main">
+    <!-- use <main> instead -->
+    <div role="banner">
+      <!-- use <header> instead -->
+      <div role="contentinfo">
+        <!-- use <footer> instead -->
 
-<!-- Widget roles — for custom interactive components -->
-<div role="tablist">
-  <button role="tab" aria-selected="true">Tab 1</button>
-  <button role="tab" aria-selected="false">Tab 2</button>
+        <!-- Widget roles — for custom interactive components -->
+        <div role="tablist">
+          <button role="tab" aria-selected="true">Tab 1</button>
+          <button role="tab" aria-selected="false">Tab 2</button>
+        </div>
+        <div role="tabpanel">Tab 1 content</div>
+
+        <!-- Other useful roles -->
+        <div role="alert">Form submitted successfully!</div>
+        <!-- announced immediately -->
+        <div role="status">3 items in cart</div>
+        <!-- announced politely -->
+        <div role="dialog" aria-labelledby="title">...</div>
+        <!-- modal dialog -->
+        <ul role="list">
+          <!-- restores list semantics in Safari when list-style: none -->
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
-<div role="tabpanel">Tab 1 content</div>
-
-<!-- Other useful roles -->
-<div role="alert">Form submitted successfully!</div>  <!-- announced immediately -->
-<div role="status">3 items in cart</div>               <!-- announced politely -->
-<div role="dialog" aria-labelledby="title">...</div>   <!-- modal dialog -->
-<ul role="list">  <!-- restores list semantics in Safari when list-style: none -->
 ```
 
 ### ARIA attributes
@@ -755,25 +948,35 @@ Roles tell assistive technology what an element *is*:
 <p id="pw-hint">Must be at least 8 characters with one number.</p>
 
 <!-- aria-hidden — hides from screen readers but still visible -->
-<span aria-hidden="true">★</span>  <!-- decorative star icon -->
-<span class="sr-only">Favorited</span>  <!-- text only screen readers see -->
+<span aria-hidden="true">★</span>
+<!-- decorative star icon -->
+<span class="sr-only">Favorited</span>
+<!-- text only screen readers see -->
 
 <!-- aria-live — announces dynamic content changes -->
-<div aria-live="polite">3 results found</div>  <!-- waits for pause in speech -->
-<div aria-live="assertive">Error: connection lost</div>  <!-- interrupts immediately -->
+<div aria-live="polite">3 results found</div>
+<!-- waits for pause in speech -->
+<div aria-live="assertive">Error: connection lost</div>
+<!-- interrupts immediately -->
 
 <!-- aria-expanded — toggle state -->
 <button aria-expanded="false" aria-controls="menu">Menu</button>
-<ul id="menu" hidden>...</ul>
+<ul id="menu" hidden>
+  ...
+</ul>
 
 <!-- aria-required vs required -->
-<input required />                  <!-- native: prevents form submission -->
-<input aria-required="true" />      <!-- ARIA: only announces to screen readers -->
+<input required />
+<!-- native: prevents form submission -->
+<input aria-required="true" />
+<!-- ARIA: only announces to screen readers -->
 <!-- Use native required when possible — it does both -->
 
 <!-- aria-disabled vs disabled -->
-<button disabled>Submit</button>              <!-- native: not clickable, not focusable -->
-<button aria-disabled="true">Submit</button>  <!-- ARIA: still focusable, announced as disabled -->
+<button disabled>Submit</button>
+<!-- native: not clickable, not focusable -->
+<button aria-disabled="true">Submit</button>
+<!-- ARIA: still focusable, announced as disabled -->
 <!-- Use aria-disabled when you want disabled users to still find the element -->
 ```
 
@@ -781,9 +984,7 @@ Roles tell assistive technology what an element *is*:
 
 ```html
 <!-- Status messages — polite, waits for user to finish reading -->
-<div role="status" aria-live="polite">
-  Search found 42 results
-</div>
+<div role="status" aria-live="polite">Search found 42 results</div>
 
 <!-- Error alerts — assertive, interrupts immediately -->
 <div role="alert" aria-live="assertive">
@@ -818,11 +1019,14 @@ Roles tell assistive technology what an element *is*:
 
 <!-- Complex image — use figure + figcaption or aria-describedby -->
 <figure>
-  <img src="architecture.png" alt="System architecture overview"
-    aria-describedby="arch-desc" />
+  <img
+    src="architecture.png"
+    alt="System architecture overview"
+    aria-describedby="arch-desc"
+  />
   <figcaption id="arch-desc">
-    The system consists of a React frontend, Node.js API layer,
-    and PostgreSQL database with Redis caching.
+    The system consists of a React frontend, Node.js API layer, and PostgreSQL
+    database with Redis caching.
   </figcaption>
 </figure>
 ```
@@ -831,9 +1035,12 @@ Roles tell assistive technology what an element *is*:
 
 ```html
 <!-- tabindex controls focus order -->
-<button>First</button>              <!-- tabindex=0 by default -->
-<div tabindex="0">Focusable div</div>  <!-- added to tab order -->
-<div tabindex="-1">Programmatic only</div>  <!-- focusable via JS, not Tab -->
+<button>First</button>
+<!-- tabindex=0 by default -->
+<div tabindex="0">Focusable div</div>
+<!-- added to tab order -->
+<div tabindex="-1">Programmatic only</div>
+<!-- focusable via JS, not Tab -->
 <!-- AVOID positive tabindex (1, 2, 3...) — it overrides natural order -->
 
 <!-- Skip link — lets keyboard users skip past navigation -->
@@ -852,7 +1059,7 @@ Roles tell assistive technology what an element *is*:
   z-index: 100;
 }
 .skip-link:focus {
-  top: 0;  /* visible only when focused via Tab */
+  top: 0; /* visible only when focused via Tab */
 }
 ```
 
@@ -863,13 +1070,13 @@ When a modal is open, Tab should cycle within the modal only — not escape to t
 ```javascript
 function trapFocus(modal) {
   const focusable = modal.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
   );
   const first = focusable[0];
   const last = focusable[focusable.length - 1];
 
-  modal.addEventListener("keydown", (e) => {
-    if (e.key !== "Tab") return;
+  modal.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
 
     if (e.shiftKey) {
       if (document.activeElement === first) {
@@ -959,6 +1166,103 @@ navigation "Main"
 
 Inspect it in Chrome DevTools → Elements → Accessibility pane.
 
+### inert — make a subtree non-interactive
+
+The `inert` attribute removes an entire subtree from hit-testing, focus, and the accessibility tree. Prefer it over manually setting `aria-hidden` + `tabindex="-1"` on every child when a modal is open:
+
+```html
+<body>
+  <div id="app" inert>
+    <!-- page content: not focusable, not announced while modal is open -->
+  </div>
+  <dialog id="confirm" open>
+    <p>Delete this item?</p>
+    <button>Cancel</button>
+    <button>Delete</button>
+  </dialog>
+</body>
+```
+
+```javascript
+// With <dialog>.showModal(), the browser applies the top layer + inert
+// behavior for you. For custom overlays without <dialog>:
+function openOverlay(overlay) {
+  document.getElementById('app').inert = true;
+  overlay.hidden = false;
+  overlay.querySelector('button').focus();
+}
+function closeOverlay(overlay) {
+  overlay.hidden = true;
+  document.getElementById('app').inert = false;
+}
+```
+
+### Native `<dialog>` vs custom modal
+
+| Concern                 | `<dialog showModal()>`              | Custom modal                   |
+| ----------------------- | ----------------------------------- | ------------------------------ |
+| Focus trap              | Built-in                            | Manual (easy to get wrong)     |
+| Escape to close         | Built-in                            | Manual                         |
+| Backdrop                | `::backdrop`                        | Extra element + CSS            |
+| `inert` background      | Automatic                           | Manual `inert` / `aria-hidden` |
+| Top layer (z-index)     | Automatic                           | Stacking-context fights        |
+| Return value            | `returnValue` + `method="dialog"`   | DIY                            |
+| Safari / older browsers | Check support; polyfill or fallback | Full control                   |
+
+📢 NOTES:
+
+> Prefer `<dialog>` for new work. If you must build a custom modal (design system constraint, animation requirements), you still need: focus trap, restore focus to the opener, Escape, `aria-modal="true"`, labelled by title, and `inert` on the rest of the page.
+
+### Landmark navigation (how screen reader users move)
+
+Screen reader users often jump by landmarks, not Tab:
+
+```
+Landmark role     | Prefer element
+------------------|---------------
+banner            | <header> (page-level)
+navigation        | <nav> (+ aria-label if multiple)
+main              | <main> (exactly one)
+complementary     | <aside>
+contentinfo       | <footer> (page-level)
+search            | <search> or role="search"
+region            | <section aria-labelledby="...">
+```
+
+If you have multiple `<nav>` elements, label them: `aria-label="Primary"` / `aria-label="Footer"`. Unlabelled duplicate landmarks are confusing.
+
+### Shadow DOM and accessibility
+
+Shadow DOM encapsulation does **not** create a separate accessibility tree. Assistive tech flattens light DOM + shadow DOM into one tree — but there are pitfalls:
+
+```html
+<!-- Host should expose the right role/name -->
+<user-card role="article" aria-labelledby="name">
+  <!-- light DOM projected into slots IS in the a11y tree -->
+  <span slot="title" id="name">Akshai</span>
+</user-card>
+```
+
+```javascript
+// Delegates focus into the shadow root's first focusable — important for
+// custom elements that wrap a single interactive control
+class IconButton extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open', delegatesFocus: true });
+    this.shadowRoot.innerHTML = `<button type="button"><slot></slot></button>`;
+  }
+}
+```
+
+Rules of thumb:
+
+- Prefer semantic elements _inside_ the shadow root (`button`, `a`, headings) over ARIA on the host when possible.
+- Label the host (`aria-label` / `aria-labelledby`) when the host itself is the interactive widget.
+- Use `delegatesFocus: true` when the custom element is essentially one control.
+- Slotted light DOM keeps its own semantics — don't wrap slotted content in ways that strip meaning.
+- Test with a real screen reader; DevTools a11y pane helps but isn't enough for Shadow DOM widgets.
+
 ---
 
 # Script and Style Loading
@@ -980,13 +1284,23 @@ How and where you load CSS and JavaScript directly impacts page rendering speed.
 <head>
   <!-- Critical CSS inlined — instant first paint for above-the-fold content -->
   <style>
-    body { font-family: sans-serif; margin: 0; }
-    .hero { height: 100vh; display: flex; }
+    body {
+      font-family: sans-serif;
+      margin: 0;
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+    }
   </style>
 
   <!-- Non-critical CSS loaded asynchronously -->
-  <link rel="preload" href="full-styles.css" as="style"
-    onload="this.onload=null;this.rel='stylesheet'" />
+  <link
+    rel="preload"
+    href="full-styles.css"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
 
   <!-- Media-specific CSS — only blocks rendering for matching media -->
   <link rel="stylesheet" href="print.css" media="print" />
@@ -1061,7 +1375,13 @@ Critical above-the-fold JS            | inline <script> in head
 
 ```html
 <!-- preload — download NOW, need it soon (high priority) -->
-<link rel="preload" href="critical-font.woff2" as="font" type="font/woff2" crossorigin />
+<link
+  rel="preload"
+  href="critical-font.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
 <link rel="preload" href="hero-image.webp" as="image" />
 
 <!-- prefetch — download in idle time, need it on NEXT page (low priority) -->
@@ -1106,11 +1426,7 @@ Critical above-the-fold JS            | inline <script> in head
 ```html
 <img
   src="photo-800.jpg"
-  srcset="
-    photo-400.jpg 400w,
-    photo-800.jpg 800w,
-    photo-1200.jpg 1200w
-  "
+  srcset="photo-400.jpg 400w, photo-800.jpg 800w, photo-1200.jpg 1200w"
   sizes="
     (max-width: 600px) 400px,
     (max-width: 1000px) 800px,
@@ -1161,7 +1477,13 @@ In practice: SVG for icons/logos, WebP/AVIF for photos with JPEG fallback, avoid
 <video controls width="720" poster="thumbnail.jpg" preload="metadata">
   <source src="video.webm" type="video/webm" />
   <source src="video.mp4" type="video/mp4" />
-  <track kind="subtitles" src="captions-en.vtt" srclang="en" label="English" default />
+  <track
+    kind="subtitles"
+    src="captions-en.vtt"
+    srclang="en"
+    label="English"
+    default
+  />
   Your browser doesn't support video.
 </video>
 
@@ -1233,12 +1555,22 @@ They have different keyboard behavior (Enter vs Enter+Space), different ARIA rol
 ### rel attribute values
 
 ```html
-<a rel="nofollow" href="...">     <!-- search engines won't follow -->
-<a rel="sponsored" href="...">    <!-- paid link -->
-<a rel="ugc" href="...">          <!-- user-generated content -->
-<a rel="noopener" href="..." target="_blank">  <!-- security -->
-<a rel="noreferrer" href="...">   <!-- no Referer header -->
-<a rel="external" href="...">     <!-- external link -->
+<a rel="nofollow" href="...">
+  <!-- search engines won't follow -->
+  <a rel="sponsored" href="...">
+    <!-- paid link -->
+    <a rel="ugc" href="...">
+      <!-- user-generated content -->
+      <a rel="noopener" href="..." target="_blank">
+        <!-- security -->
+        <a rel="noreferrer" href="...">
+          <!-- no Referer header -->
+          <a rel="external" href="..."> <!-- external link --></a></a
+        ></a
+      ></a
+    ></a
+  ></a
+>
 ```
 
 ---
@@ -1249,7 +1581,9 @@ Tables are for tabular data only — never for page layout.
 
 ```html
 <table>
-  <caption>Quarterly Revenue (in thousands)</caption>
+  <caption>
+    Quarterly Revenue (in thousands)
+  </caption>
 
   <thead>
     <tr>
@@ -1287,8 +1621,10 @@ Tables are for tabular data only — never for page layout.
 ### Spanning
 
 ```html
-<th colspan="2">Full Name</th>  <!-- spans 2 columns -->
-<td rowspan="2">28</td>         <!-- spans 2 rows -->
+<th colspan="2">Full Name</th>
+<!-- spans 2 columns -->
+<td rowspan="2">28</td>
+<!-- spans 2 rows -->
 ```
 
 ---
@@ -1304,18 +1640,20 @@ Store custom data on HTML elements:
 ```
 
 ```javascript
-const article = document.querySelector("article");
+const article = document.querySelector('article');
 
-article.dataset.id;          // "42" (always a string)
-article.dataset.category;    // "javascript"
-article.dataset.authorName;  // "Akshai" (data-author-name → camelCase)
+article.dataset.id; // "42" (always a string)
+article.dataset.category; // "javascript"
+article.dataset.authorName; // "Akshai" (data-author-name → camelCase)
 
-article.dataset.views = "1500";  // set
-delete article.dataset.views;    // remove
+article.dataset.views = '1500'; // set
+delete article.dataset.views; // remove
 ```
 
 ```css
-[data-category="javascript"] { border-left: 3px solid yellow; }
+[data-category='javascript'] {
+  border-left: 3px solid yellow;
+}
 
 [data-tooltip]:hover::after {
   content: attr(data-tooltip);
@@ -1346,12 +1684,23 @@ Application state             | JavaScript variables / state management
 ### iframe
 
 ```html
-<iframe src="https://example.com" width="600" height="400" title="Example website"></iframe>
+<iframe
+  src="https://example.com"
+  width="600"
+  height="400"
+  title="Example website"
+></iframe>
 
 <!-- YouTube embed -->
-<iframe src="https://www.youtube.com/embed/VIDEO_ID" width="560" height="315"
-  title="Video title" allow="accelerometer; autoplay; clipboard-write; encrypted-media"
-  allowfullscreen loading="lazy"></iframe>
+<iframe
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  width="560"
+  height="315"
+  title="Video title"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media"
+  allowfullscreen
+  loading="lazy"
+></iframe>
 ```
 
 ### iframe security — sandbox
@@ -1361,7 +1710,10 @@ Application state             | JavaScript variables / state management
 <iframe src="untrusted.html" sandbox></iframe>
 
 <!-- Selective permissions -->
-<iframe src="widget.html" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+<iframe
+  src="widget.html"
+  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+></iframe>
 ```
 
 📢 NOTES:
@@ -1381,7 +1733,10 @@ Content-Security-Policy: frame-ancestors 'self'
 ### srcdoc — inline HTML
 
 ```html
-<iframe srcdoc="<h1>Hello</h1><p>Inline HTML content</p>" title="Preview"></iframe>
+<iframe
+  srcdoc="<h1>Hello</h1><p>Inline HTML content</p>"
+  title="Preview"
+></iframe>
 ```
 
 ---
@@ -1395,7 +1750,7 @@ Content-Security-Policy: frame-ancestors 'self'
 ```
 
 ```javascript
-document.getElementById("editor").addEventListener("input", () => {
+document.getElementById('editor').addEventListener('input', () => {
   console.log(editor.innerHTML);
 });
 ```
@@ -1408,11 +1763,15 @@ document.getElementById("editor").addEventListener("input", () => {
 ```
 
 ```javascript
-item.addEventListener("dragstart", (e) => e.dataTransfer.setData("text/plain", e.target.id));
-zone.addEventListener("dragover", (e) => e.preventDefault());
-zone.addEventListener("drop", (e) => {
+item.addEventListener('dragstart', (e) =>
+  e.dataTransfer.setData('text/plain', e.target.id),
+);
+zone.addEventListener('dragover', (e) => e.preventDefault());
+zone.addEventListener('drop', (e) => {
   e.preventDefault();
-  zone.appendChild(document.getElementById(e.dataTransfer.getData("text/plain")));
+  zone.appendChild(
+    document.getElementById(e.dataTransfer.getData('text/plain')),
+  );
 });
 ```
 
@@ -1440,19 +1799,25 @@ opacity: 0          | ❌      | ✅          | ✅         | ✅
 
 ```html
 <textarea spellcheck="true">Check my spelling</textarea>
-<input type="text" spellcheck="false" />  <!-- disable for code/IDs -->
+<input type="text" spellcheck="false" />
+<!-- disable for code/IDs -->
 
-<p translate="no">Akshai TR</p>  <!-- don't translate proper nouns -->
+<p translate="no">Akshai TR</p>
+<!-- don't translate proper nouns -->
 
 <input type="email" autocomplete="email" />
 <input type="text" autocomplete="given-name" />
 <input type="text" autocomplete="off" />
 
 <!-- inputmode — controls virtual keyboard WITHOUT validation -->
-<input type="text" inputmode="numeric" />  <!-- number pad for OTP/ZIP -->
-<input type="text" inputmode="decimal" />  <!-- number pad with decimal -->
-<input type="text" inputmode="tel" />      <!-- phone pad -->
-<input type="text" inputmode="url" />      <!-- URL keyboard -->
+<input type="text" inputmode="numeric" />
+<!-- number pad for OTP/ZIP -->
+<input type="text" inputmode="decimal" />
+<!-- number pad with decimal -->
+<input type="text" inputmode="tel" />
+<!-- phone pad -->
+<input type="text" inputmode="url" />
+<!-- URL keyboard -->
 ```
 
 📢 NOTES:
@@ -1475,15 +1840,17 @@ opacity: 0          | ❌      | ✅          | ✅         | ✅
   </form>
 </dialog>
 
-<button onclick="document.getElementById('myDialog').showModal()">Delete</button>
+<button onclick="document.getElementById('myDialog').showModal()">
+  Delete
+</button>
 ```
 
 ```javascript
-const dialog = document.getElementById("myDialog");
-dialog.showModal();  // opens with backdrop, traps focus, Escape closes
-dialog.show();       // opens without backdrop
+const dialog = document.getElementById('myDialog');
+dialog.showModal(); // opens with backdrop, traps focus, Escape closes
+dialog.show(); // opens without backdrop
 dialog.close();
-dialog.addEventListener("close", () => console.log(dialog.returnValue));
+dialog.addEventListener('close', () => console.log(dialog.returnValue));
 ```
 
 ```css
@@ -1507,10 +1874,10 @@ Native `<dialog>` gives you focus trapping, Escape key, backdrop, and accessibil
 ```
 
 ```javascript
-const template = document.getElementById("card-template");
+const template = document.getElementById('card-template');
 const clone = template.content.cloneNode(true);
-clone.querySelector(".card-title").textContent = "Closures";
-document.getElementById("container").appendChild(clone);
+clone.querySelector('.card-title').textContent = 'Closures';
+document.getElementById('container').appendChild(clone);
 ```
 
 Content inside `<template>` is parsed but not rendered — images don't load, scripts don't run.
@@ -1539,7 +1906,8 @@ Native popovers: light dismiss built-in, top layer (no z-index battles), accessi
   <p>A closure is a function that retains access to its lexical scope...</p>
 </details>
 
-<details open>  <!-- open by default -->
+<details open>
+  <!-- open by default -->
   <summary>What is hoisting?</summary>
   <p>Hoisting moves declarations to the top of their scope...</p>
 </details>
@@ -1553,25 +1921,27 @@ No CSS or JavaScript needed for basic show/hide behavior.
 class UserCard extends HTMLElement {
   constructor() {
     super();
-    const shadow = this.attachShadow({ mode: "open" });
+    const shadow = this.attachShadow({ mode: 'open' });
     shadow.innerHTML = `
       <style>
         .card { padding: 16px; border: 1px solid #ddd; border-radius: 8px; }
       </style>
       <div class="card">
-        <p><strong>${this.getAttribute("name")}</strong></p>
-        <p>${this.getAttribute("role")}</p>
+        <p><strong>${this.getAttribute('name')}</strong></p>
+        <p>${this.getAttribute('role')}</p>
       </div>
     `;
   }
 
-  connectedCallback() { }
-  disconnectedCallback() { }
-  attributeChangedCallback(name, oldVal, newVal) { }
-  static get observedAttributes() { return ["name", "role"]; }
+  connectedCallback() {}
+  disconnectedCallback() {}
+  attributeChangedCallback(name, oldVal, newVal) {}
+  static get observedAttributes() {
+    return ['name', 'role'];
+  }
 }
 
-customElements.define("user-card", UserCard);
+customElements.define('user-card', UserCard);
 ```
 
 ```html
@@ -1589,6 +1959,34 @@ customElements.define("user-card", UserCard);
 </template>
 ```
 
+```html
+<user-card>
+  <span slot="title">Akshai</span>
+  <p>Frontend Engineer</p>
+  <!-- default (unnamed) slot -->
+</user-card>
+```
+
+**open vs closed shadow roots:**
+
+```javascript
+this.attachShadow({ mode: 'open' }); // element.shadowRoot accessible from outside
+this.attachShadow({ mode: 'closed' }); // element.shadowRoot === null from outside
+```
+
+Prefer `open` unless you have a hard encapsulation requirement. Closed roots make debugging and a11y tooling harder and don't provide real security.
+
+**Lifecycle callbacks (interview-ready):**
+
+```
+connectedCallback      — element inserted into DOM (setup listeners, fetch)
+disconnectedCallback   — element removed (cleanup listeners, timers)
+attributeChangedCallback — observed attribute changed (re-render)
+adoptedCallback        — moved to a new document (rare)
+```
+
+Always clean up in `disconnectedCallback` — custom elements can be attached/detached repeatedly (e.g. SPA route changes).
+
 ---
 
 # Web Storage
@@ -1597,15 +1995,15 @@ customElements.define("user-card", UserCard);
 
 ```javascript
 // Store data — persists across browser sessions (until explicitly cleared)
-localStorage.setItem("theme", "dark");
-localStorage.setItem("user", JSON.stringify({ name: "Akshai", age: 28 }));
+localStorage.setItem('theme', 'dark');
+localStorage.setItem('user', JSON.stringify({ name: 'Akshai', age: 28 }));
 
 // Read data
-localStorage.getItem("theme");  // "dark"
-JSON.parse(localStorage.getItem("user"));  // { name: "Akshai", age: 28 }
+localStorage.getItem('theme'); // "dark"
+JSON.parse(localStorage.getItem('user')); // { name: "Akshai", age: 28 }
 
 // Remove
-localStorage.removeItem("theme");
+localStorage.removeItem('theme');
 
 // Clear all
 localStorage.clear();
@@ -1618,8 +2016,8 @@ localStorage.clear();
 
 ```javascript
 // Same API as localStorage, but data is scoped to the tab
-sessionStorage.setItem("scrollPosition", "500");
-sessionStorage.getItem("scrollPosition");  // "500"
+sessionStorage.setItem('scrollPosition', '500');
+sessionStorage.getItem('scrollPosition'); // "500"
 // Data is lost when the tab is closed
 // Each tab has its own independent sessionStorage
 ```
@@ -1639,24 +2037,27 @@ IndexedDB           | Forever      | All tabs    | Large   | Offline data, large
 
 ```javascript
 // Open a database
-const request = indexedDB.open("MyApp", 1);
+const request = indexedDB.open('MyApp', 1);
 
 request.onupgradeneeded = (event) => {
   const db = event.target.result;
-  const store = db.createObjectStore("users", { keyPath: "id", autoIncrement: true });
-  store.createIndex("email", "email", { unique: true });
+  const store = db.createObjectStore('users', {
+    keyPath: 'id',
+    autoIncrement: true,
+  });
+  store.createIndex('email', 'email', { unique: true });
 };
 
 request.onsuccess = (event) => {
   const db = event.target.result;
 
   // Add data
-  const tx = db.transaction("users", "readwrite");
-  tx.objectStore("users").add({ name: "Akshai", email: "akshai@email.com" });
+  const tx = db.transaction('users', 'readwrite');
+  tx.objectStore('users').add({ name: 'Akshai', email: 'akshai@email.com' });
 
   // Read data
-  const readTx = db.transaction("users", "readonly");
-  const getReq = readTx.objectStore("users").get(1);
+  const readTx = db.transaction('users', 'readonly');
+  const getReq = readTx.objectStore('users').get(1);
   getReq.onsuccess = () => console.log(getReq.result);
 };
 ```
@@ -1667,8 +2068,10 @@ IndexedDB is complex — in practice, use a wrapper library like `idb` (by Jake 
 
 ```javascript
 // Fires when another tab changes localStorage (not the current tab)
-window.addEventListener("storage", (event) => {
-  console.log(`Key: ${event.key}, Old: ${event.oldValue}, New: ${event.newValue}`);
+window.addEventListener('storage', (event) => {
+  console.log(
+    `Key: ${event.key}, Old: ${event.oldValue}, New: ${event.newValue}`,
+  );
 });
 
 // Use case: user logs out in one tab → all tabs respond
@@ -1718,7 +2121,13 @@ How to fix:
   <link rel="preconnect" href="https://api.example.com" />
 
   <!-- 2. Preload critical resources -->
-  <link rel="preload" href="/fonts/main.woff2" as="font" type="font/woff2" crossorigin />
+  <link
+    rel="preload"
+    href="/fonts/main.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
 
   <!-- 3. CSS -->
   <link rel="stylesheet" href="/css/critical.css" />
@@ -1744,8 +2153,10 @@ How to fix:
 ### fetchpriority
 
 ```html
-<img src="hero.jpg" fetchpriority="high" alt="..." />       <!-- critical -->
-<img src="footer.jpg" fetchpriority="low" alt="..." loading="lazy" />  <!-- non-critical -->
+<img src="hero.jpg" fetchpriority="high" alt="..." />
+<!-- critical -->
+<img src="footer.jpg" fetchpriority="low" alt="..." loading="lazy" />
+<!-- non-critical -->
 <script src="app.js" fetchpriority="high"></script>
 <script src="analytics.js" fetchpriority="low" async></script>
 ```
@@ -1754,7 +2165,15 @@ How to fix:
 
 ```html
 <!-- BAD — deeply nested -->
-<div><div><div><div><div><p>Hello</p></div></div></div></div></div>
+<div>
+  <div>
+    <div>
+      <div>
+        <div><p>Hello</p></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- GOOD — flat -->
 <article class="card"><p>Hello</p></article>
@@ -1776,7 +2195,10 @@ CSP tells the browser what resources are allowed to load and from where. It prev
 
 ```html
 <!-- Via meta tag (limited) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.example.com; style-src 'self' 'unsafe-inline'" />
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; script-src 'self' https://cdn.example.com; style-src 'self' 'unsafe-inline'"
+/>
 ```
 
 ```
@@ -1801,14 +2223,16 @@ frame-src 'none'                      — no iframes allowed
 Ensures CDN-loaded scripts haven't been tampered with:
 
 ```html
-<script src="https://cdn.example.com/library.js"
+<script
+  src="https://cdn.example.com/library.js"
   integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxAUhk7wYR28+"
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous"
+></script>
 ```
 
 If the file's hash doesn't match the `integrity` attribute, the browser refuses to execute it. Generate hashes with `openssl dgst -sha384 -binary file.js | base64`.
 
-### rel="noopener" for target="_blank"
+### rel="noopener" for target="\_blank"
 
 Already covered in Links section — prevents the opened page from accessing `window.opener`.
 
@@ -1826,6 +2250,85 @@ origin                    — send only the origin (https://example.com), not th
 strict-origin-when-cross-origin — full URL to same origin, only origin to cross-origin (recommended default)
 ```
 
+### XSS and dangerous HTML APIs
+
+Cross-Site Scripting (XSS) happens when untrusted input is interpreted as HTML/JS. On the frontend, the classic footguns are:
+
+```javascript
+// BAD — attacker-controlled string becomes live HTML/JS
+el.innerHTML = userComment;
+el.outerHTML = userComment;
+document.write(userComment);
+el.insertAdjacentHTML('beforeend', userComment);
+
+// ALSO BAD — contenteditable / rich text without sanitization
+editor.innerHTML = fetchedHtmlFromServer;
+
+// GOOD — text only
+el.textContent = userComment;
+
+// GOOD — structured DOM, not HTML strings
+const li = document.createElement('li');
+li.textContent = userComment;
+list.appendChild(li);
+
+// GOOD — sanitize if you truly need HTML (e.g. CMS content)
+// Use a maintained sanitizer (DOMPurify) AND a strict CSP
+el.innerHTML = DOMPurify.sanitize(userComment);
+```
+
+Reflected XSS: payload in the URL/query is echoed into the page.
+Stored XSS: payload is saved (comment, profile) and served to others.
+DOM-based XSS: client-side JS reads a source (`location.hash`, `postMessage`) and sinks it into HTML.
+
+📢 NOTES:
+
+> Frameworks help (React escapes JSX text by default) but `dangerouslySetInnerHTML`, `v-html`, and `element.innerHTML` still exist. Treat any HTML string from outside your build as hostile.
+
+### Trusted Types (defense in depth)
+
+Trusted Types make the dangerous sinks reject raw strings — they only accept typed objects created by a policy you define:
+
+```html
+<!-- Prefer HTTP header in production -->
+<meta
+  http-equiv="Content-Security-Policy"
+  content="require-trusted-types-for 'script'; trusted-types default"
+/>
+```
+
+```javascript
+// Create a policy once (usually at app bootstrap)
+const policy = trustedTypes.createPolicy('default', {
+  createHTML: (input) => DOMPurify.sanitize(input),
+  createScriptURL: (url) => {
+    if (url.startsWith('https://cdn.example.com/')) return url;
+    throw new TypeError('Untrusted script URL');
+  },
+});
+
+// Now this works — sink receives a TrustedHTML, not a string
+el.innerHTML = policy.createHTML(userComment);
+
+// This throws under require-trusted-types-for 'script'
+// el.innerHTML = userComment;
+```
+
+Trusted Types don't replace CSP or sanitization — they force every HTML/script sink through a reviewable policy so accidental string assignment fails loudly.
+
+### Security checklist (HTML-adjacent)
+
+```
+Threat              | Mitigation
+--------------------|------------------------------------------
+XSS                 | textContent, sanitizer, CSP, Trusted Types
+Clickjacking        | CSP frame-ancestors / X-Frame-Options
+Malicious iframe    | sandbox (never scripts+same-origin together)
+CDN compromise      | Subresource Integrity (SRI)
+tabnabbing          | rel="noopener" on target="_blank"
+Token leakage       | Referrer-Policy, avoid tokens in URLs
+```
+
 ---
 
 # SEO Essentials
@@ -1835,14 +2338,16 @@ strict-origin-when-cross-origin — full URL to same origin, only origin to cros
 ```html
 <!-- GOOD -->
 <h1>JavaScript Concepts</h1>
-  <h2>Closures</h2>
-    <h3>Lexical Scope</h3>
-  <h2>Promises</h2>
+<h2>Closures</h2>
+<h3>Lexical Scope</h3>
+<h2>Promises</h2>
 
 <!-- BAD -->
 <h1>JavaScript</h1>
-<h1>Concepts</h1>    <!-- two h1s -->
-<h4>Closures</h4>    <!-- skipped h2 and h3 -->
+<h1>Concepts</h1>
+<!-- two h1s -->
+<h4>Closures</h4>
+<!-- skipped h2 and h3 -->
 ```
 
 One `<h1>` per page. Don't skip heading levels.
@@ -1859,14 +2364,14 @@ Prevents duplicate content penalties when content is at multiple URLs.
 
 ```html
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Understanding Closures in JavaScript",
-  "author": { "@type": "Person", "name": "Akshai" },
-  "datePublished": "2025-03-15",
-  "description": "A deep dive into JavaScript closures..."
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Understanding Closures in JavaScript",
+    "author": { "@type": "Person", "name": "Akshai" },
+    "datePublished": "2025-03-15",
+    "description": "A deep dive into JavaScript closures..."
+  }
 </script>
 ```
 
@@ -1876,18 +2381,20 @@ Enables rich results in Google — article cards, FAQ dropdowns, star ratings.
 
 ```html
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [{
-    "@type": "Question",
-    "name": "What is a closure?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "A closure is a function that retains access to its lexical scope..."
-    }
-  }]
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a closure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A closure is a function that retains access to its lexical scope..."
+        }
+      }
+    ]
+  }
 </script>
 ```
 
@@ -1895,15 +2402,25 @@ Enables rich results in Google — article cards, FAQ dropdowns, star ratings.
 
 ```html
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://example.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://example.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "Understanding Closures" }
-  ]
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://example.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://example.com/blog"
+      },
+      { "@type": "ListItem", "position": 3, "name": "Understanding Closures" }
+    ]
+  }
 </script>
 ```
 
@@ -1912,7 +2429,11 @@ Enables rich results in Google — article cards, FAQ dropdowns, star ratings.
 ```html
 <link rel="alternate" hreflang="en" href="https://example.com/en/closures" />
 <link rel="alternate" hreflang="ta" href="https://example.com/ta/closures" />
-<link rel="alternate" hreflang="x-default" href="https://example.com/closures" />
+<link
+  rel="alternate"
+  hreflang="x-default"
+  href="https://example.com/closures"
+/>
 ```
 
 ### Social sharing tags
@@ -1997,9 +2518,10 @@ A Service Worker is a script that runs in the background, separate from the web 
 ```javascript
 // Register in your main JS
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js')
-    .then(reg => console.log('SW registered'))
-    .catch(err => console.log('SW registration failed'));
+  navigator.serviceWorker
+    .register('/sw.js')
+    .then((reg) => console.log('SW registered'))
+    .catch((err) => console.log('SW registration failed'));
 }
 ```
 
@@ -2011,17 +2533,17 @@ const URLS_TO_CACHE = ['/', '/styles.css', '/app.js', '/offline.html'];
 // Install — cache core assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(URLS_TO_CACHE))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(URLS_TO_CACHE)),
   );
 });
 
 // Fetch — serve from cache, fallback to network
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
-      .catch(() => caches.match('/offline.html'))
+    caches
+      .match(event.request)
+      .then((response) => response || fetch(event.request))
+      .catch(() => caches.match('/offline.html')),
   );
 });
 ```
@@ -2031,7 +2553,10 @@ self.addEventListener('fetch', (event) => {
 ```html
 <!-- iOS status bar appearance -->
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+/>
 <meta name="apple-mobile-web-app-title" content="JS Concepts" />
 
 <!-- Theme color (already covered but critical for PWA) -->
@@ -2049,3 +2574,100 @@ For Chrome to show the "Add to Home Screen" prompt:
 2. Served over HTTPS
 3. Registered Service Worker with a fetch handler
 4. The user has interacted with the site sufficiently
+
+---
+
+# Interview Drills
+
+Close the doc. Answer each prompt aloud in ~60-90 seconds. Then open the matching section and fill gaps. Follow-ups are what strong interviewers ask next.
+
+### Semantics & document structure
+
+**Q1.** Why prefer semantic HTML over `<div class="...">` soup?
+_Expected:_ Meaning for AT + SEO + maintainability; landmarks and headings create a navigable outline; styling belongs in CSS.
+_Follow-up:_ When is a `<div>` still correct? (`article` vs `section` vs `div`.)
+
+**Q2.** What does `<!DOCTYPE html>` actually do?
+_Expected:_ Triggers standards mode vs quirks mode; quirks changes box model (`width` includes padding/border). Check with `document.compatMode`.
+_Follow-up:_ Why must `<meta charset>` appear early?
+
+**Q3.** Walk through the Critical Rendering Path from HTML bytes to pixels.
+_Expected:_ Bytes → characters → tokens → DOM; CSS → CSSOM (render-blocking); JS may block parsing; DOM+CSSOM → render tree → layout → paint → composite.
+_Follow-up:_ Why do `transform`/`opacity` animations perform better?
+
+### Forms
+
+**Q4.** How do you associate a label with an input, and why does it matter?
+_Expected:_ `for`/`id` or wrap; click target + screen reader name; common a11y failure without it.
+_Follow-up:_ Difference between `disabled`, `readonly`, and `aria-disabled`?
+
+**Q5.** Explain the Constraint Validation API.
+_Expected:_ `checkValidity` / `reportValidity` / `validity` flags; `setCustomValidity` must be cleared on input; native attributes still preferred when enough.
+_Follow-up:_ When would you still validate in JS on the server round-trip?
+
+**Q6.** GET vs POST vs `enctype` for file uploads.
+_Expected:_ GET → query string (search); POST → body (mutations); file uploads need `multipart/form-data`.
+_Follow-up:_ What does `FormData` do for you with `fetch`?
+
+### Accessibility
+
+**Q7.** State the first rule of ARIA and give a bad/good example.
+_Expected:_ Prefer native elements; don't fake buttons with `<div role="button">`.
+_Follow-up:_ When _is_ ARIA necessary? (custom tabs, combobox, live regions.)
+
+**Q8.** How would you make a modal accessible?
+_Expected:_ Prefer `<dialog showModal()>`; else focus trap, Escape, restore focus, `aria-modal`, label, `inert` background.
+_Follow-up:_ `aria-hidden` vs `inert` vs `display: none`?
+
+**Q9.** Alt text strategy for informative, decorative, and linked images.
+_Expected:_ Describe content; `alt=""` for decorative; destination for linked logos; long desc via figcaption/`aria-describedby` for complex images.
+_Follow-up:_ What is the accessibility tree?
+
+### Loading, images, performance
+
+**Q10.** `defer` vs `async` vs `type="module"`.
+_Expected:_ defer = parallel download, ordered after parse; async = execute when ready (order not guaranteed); modules defer by default + strict + import/export.
+_Follow-up:_ What belongs in `async`? (independent analytics.)
+
+**Q11.** How do `srcset` + `sizes` differ from `<picture>`?
+_Expected:_ srcset/sizes = same image, browser picks resolution; picture = art direction or format switching (AVIF/WebP → JPEG).
+_Follow-up:_ How do `width`/`height` and `fetchpriority` relate to CLS and LCP?
+
+**Q12.** Name the Core Web Vitals and one HTML-level fix for each.
+_Expected:_ LCP (<2.5s) preload/fetchpriority hero; INP (<200ms) less main-thread work; CLS (<0.1) image dimensions / reserved space.
+_Follow-up:_ What is the preload scanner, and what resources does it miss?
+
+### Security & embedding
+
+**Q13.** How does CSP reduce XSS risk? What does SRI protect against?
+_Expected:_ CSP allowlists script/style origins and blocks inline/unknown scripts; SRI ensures CDN bytes match a hash.
+_Follow-up:_ Why is `allow-scripts` + `allow-same-origin` dangerous on sandboxed iframes?
+
+**Q14.** Name three DOM XSS sinks and safer alternatives.
+_Expected:_ `innerHTML` / `document.write` / `insertAdjacentHTML` → `textContent` / `createElement` / sanitizer + Trusted Types.
+_Follow-up:_ What problem do Trusted Types solve that CSP alone doesn't?
+
+### APIs, storage, SEO, PWA
+
+**Q15.** What do you get for free with `<dialog showModal()>` and the Popover API?
+_Expected:_ Dialog: top layer, focus trap, Escape, backdrop, returnValue. Popover: light dismiss, top layer, less JS.
+_Follow-up:_ `popover=auto` vs `manual`?
+
+**Q16.** localStorage vs sessionStorage vs cookies vs IndexedDB.
+_Expected:_ Persist/scope/size/use-case table; storage event for cross-tab; cookies for server-readable auth; IndexedDB for large/offline.
+_Follow-up:_ Why is localStorage a poor place for access tokens?
+
+**Q17.** What makes a page installable as a PWA?
+_Expected:_ HTTPS, manifest (name/icons/start_url/display), service worker with fetch handler, user engagement.
+_Follow-up:_ Sketch a cache-first vs network-first strategy and when you'd use each.
+
+### Rapid-fire (one sentence each)
+
+1. Link vs button?
+2. Why `rel="noopener"` on `target="_blank"`?
+3. `inputmode="numeric"` vs `type="number"`?
+4. One `<main>` per page — true or false?
+5. Is `user-scalable=no` acceptable? Why/why not?
+6. Canonical URL purpose?
+7. When is `<table>` appropriate?
+8. `loading="lazy"` on the LCP image — good or bad?
