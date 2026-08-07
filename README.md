@@ -1269,7 +1269,7 @@ Rules of thumb:
 
 How and where you load CSS and JavaScript directly impacts page rendering speed.
 
-# CSS Loading — Render-Blocking
+### CSS Loading — Render-Blocking
 
 By default, CSS is considered a **render-blocking** resource. When a browser encounters a standard stylesheet link:
 
@@ -1283,11 +1283,11 @@ It pauses rendering (painting pixels to the screen) until the stylesheet is comp
 
 **Reasoning:** If the browser rendered HTML immediately before processing styles, users would see an unstyled page that abruptly shifts once styles load—a jarring visual glitch known as **FOUC** (Flash of Unstyled Content). To deliver a consistent experience, browsers delay rendering until the CSS is ready.
 
-## Strategies to Reduce CSS Blocking
+#### Strategies to Reduce CSS Blocking
 
 When a single large stylesheet blocks rendering, the page can feel slow or responsive only after a delay. The following techniques minimize this impact:
 
-### 1. Inlining Critical CSS
+##### 1. Inlining Critical CSS
 
 **Concept:** Move styles needed for the above-the-fold content (what the user sees immediately without scrolling) directly into a `<style>` tag in the `<head>`.
 
@@ -1306,7 +1306,7 @@ When a single large stylesheet blocks rendering, the page can feel slow or respo
 </style>
 ```
 
-### 2. Asynchronous Loading for Non-Critical CSS
+##### 2. Asynchronous Loading for Non-Critical CSS
 
 **Concept:** Fetch non-essential styles (below-the-fold content, modals, footers) in the background using `rel="preload"`.
 
