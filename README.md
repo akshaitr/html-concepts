@@ -1271,42 +1271,52 @@ How and where you load CSS and JavaScript directly impacts page rendering speed.
 
 ### CSS loading — render blocking
 
+By default, CSS is considered a render-blocking resource. When a browser encounters a standard stylesheet link:
 ```html
 <head>
   <link rel="stylesheet" href="styles.css" />
-  <!-- Browser won't paint ANYTHING until this CSS is downloaded and parsed -->
 </head>
 ```
+It pauses rendering (painting pixels to the screen) until the stylesheet is completely downloaded and parsed into the CSSOM (CSS Object Model).
+
+Reasoning: If the browser rendered HTML immediately before processing styles, users would see an unstyled page that abruptly shifts once styles load—a jarring visual glitch known as FOUC (Flash of Unstyled Content). To deliver a consistent experience, browsers delay rendering until the CSS is ready.
 
 **Strategies to reduce CSS blocking:**
 
+When a single large stylesheet blocks rendering, the page can feel slow or responsive only after a delay. The following techniques minimize this impact:
+
+1. Inlining Critical CSS
+Concept: Move styles needed for the above-the-fold content (what the user sees immediately without scrolling) directly into a <style> tag in the <head>.
+
+Benefit: Eliminates an extra network request for initial rendering, giving the user an instant First Paint.
+
 ```html
-<head>
-  <!-- Critical CSS inlined — instant first paint for above-the-fold content -->
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-    }
-    .hero {
-      height: 100vh;
-      display: flex;
-    }
-  </style>
-
-  <!-- Non-critical CSS loaded asynchronously -->
-  <link
-    rel="preload"
-    href="full-styles.css"
-    as="style"
-    onload="this.onload=null;this.rel='stylesheet'"
-  />
-
-  <!-- Media-specific CSS — only blocks rendering for matching media -->
-  <link rel="stylesheet" href="print.css" media="print" />
-  <link rel="stylesheet" href="mobile.css" media="(max-width: 768px)" />
-</head>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+  }
+  .hero {
+    height: 100vh;
+    display: flex;
+  }
+</style>
 ```
+
+2. Asynchronous Loading for Non-Critical CSS
+Concept: Fetch non-essential styles (below-the-fold content, modals, footers) in the background using rel="preload".
+```html
+<link
+  rel="preload"
+  href="full-styles.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+```
+How it works:
+1. `rel="preload"` tells the browser to download full-styles.css asynchronously without blocking page rendering.
+2. `as="style"` specifies the resource type.
+3. `onload="..."` switches the link's `rel` attribute to stylesheet as soon as the file finishes downloading, applying the styles to the page without blocking the initial paint.
 
 ### JavaScript loading — three modes
 
